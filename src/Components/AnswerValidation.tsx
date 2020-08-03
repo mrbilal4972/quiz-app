@@ -106,10 +106,8 @@ const useStyles = makeStyles({
                       {columns.map((column) => {
                           const value = row[column.id];
                           return (
-                              // console.log(answerForDisplay[index].answer)
                           <TableCell key={column.id} align={column.align} className = {column.label === 'Your_Answer' ? (value === answerForDisplay[index].answer ? classes.right : classes.wrong) : classes.others }>
                               {value}
-                              {/* {column.format && typeof value === 'number' ? column.format(value) : value} */}
                           </TableCell>
                           );
                       })}
