@@ -26,7 +26,6 @@ function Loading() {
             <h1 className={classes.loading}>Loading  <CircularProgress /></h1>
         </Grid>
     </Grid>
-      {/* <h3>Loading...</h3> */}
     </>
   )
 }

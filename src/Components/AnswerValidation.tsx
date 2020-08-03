@@ -46,31 +46,17 @@ const useStyles = makeStyles({
             id: 'Q_No',
             label: 'Q_No',
             minWidth: 170,
-            // format: (value: number) => value.toLocaleString('en-US'),
-          //   align: 'right',
           },
-          // { id: 'code', label: 'ISO\u00a0Code', minWidth: 100 },
           {
             id: 'Your_Answer',
             label: 'Your_Answer',
             minWidth: 170,
-          //   align: 'right',
-          //   format: (value: number) => value.toLocaleString('en-US'),
           },
           {
             id: 'Correct_Answer',
             label: 'Correct_Answer',
             minWidth: 170,
-          //   align: 'right',
-          //   format: (value: number) => value.toLocaleString('en-US'),
           },
-          // {
-          //   id: 'density',
-          //   label: 'Density',
-          //   minWidth: 170,
-          //   align: 'right',
-          //   format: (value: number) => value.toFixed(2),
-          // },
         ];
       
         const rows: Data[] = [];

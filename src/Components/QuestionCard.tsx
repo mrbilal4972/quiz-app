@@ -193,9 +193,8 @@ if(displayScore){
           btnName === 'Next' ?
           <Button type={'submit'} disabled={disableBtn} variant="contained" color="primary">
             {btnName}
-          </Button> :
-          // <button type={'submit'} disabled={disableBtn}>{btnName}</button> :
-              // <button type={'submit'} disabled={disableBtn}>{btnName}</button>
+          </Button> 
+          :
           <Button type={'submit'} disabled={disableBtn} variant="contained" color="primary">
             {btnName}
           </Button>
