@@ -100,7 +100,7 @@ const useStyles = makeStyles({
                   </TableRow>
               </TableHead>
               <TableBody>
-                  {rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row, index) => {
+                  {rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row, index: number) => {
                   return (
                       <TableRow hover role="checkbox" tabIndex={-1} key={row.Q_No}>
                       {columns.map((column) => {
