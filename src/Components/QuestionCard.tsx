@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Question } from './../Types/quiz_type';
+import { Question, AnswerType } from './../Types/quiz_type';
 import { getQuiz } from '../services/quizService';
 import Score from './Score';
 import bg from './../images/bg.jpg'
@@ -8,6 +8,7 @@ import bg from './../images/bg.jpg'
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import { Button } from '@material-ui/core';
+import Loading from './Loading';
 
 // Styling of Commponents
 
@@ -59,7 +60,8 @@ const useStyles = makeStyles((theme) => ({
     fontSize: '1.2rem',
     borderRadius: '0.75rem',
     padding: '0.5rem'
-  }
+  },
+  
 }));
 
 function QuestionCard() {
@@ -76,13 +78,21 @@ function QuestionCard() {
       setScoreValue(++scoreValue);
       console.log(scoreValue);
     }
+    
+    let answers: AnswerType = {
+      userAnswer: String(chk),
+      answer: quizArr[currentQuestion].answer
+    }
+    setAnswerTable([...answerTable, answers]);
+    // console.log(answers,answerTable)
 
     // Answer Check reset
     setChkAnswer(false);
 
-    // Quiz Completation
     if(currentQuestion < quizArr.length-1){
-    setCurrentQuestion(++currentQuestion)
+      setCurrentQuestion(++currentQuestion);
+      console.log(answerTable);
+      // Quiz Completation
         if(currentQuestion === quizArr.length-1){
             setBtnName('Submit');
         }
@@ -100,7 +110,8 @@ function nextQuizHandler(){
   setScoreValue(0)
   setDisplayScore(false);
   setNextQuiz(!nextQuiz);
-  setQuizArr([])
+  setQuizArr([]);
+  setAnswerTable([])
 }
 
 // States declaration
@@ -112,8 +123,9 @@ function nextQuizHandler(){
   let [displayScore, setDisplayScore] = useState<boolean>(false)
   let [scoreValue, setScoreValue] = useState<number>(0);
   let [disableBtn, setDisableBtn] = useState<boolean>(true);
-  let [nextQuiz, setNextQuiz] = useState<boolean> (false)
-
+  let [nextQuiz, setNextQuiz] = useState<boolean> (false);
+  let [answerTable, setAnswerTable] = useState<AnswerType[]>([])
+  
 // Radio Button Check Implementation
   function changeHandler(e: any){
     console.log('on change')
@@ -129,7 +141,7 @@ function nextQuizHandler(){
 // fetch data from API
   useEffect(() => {
     async function fetchData(){
-      const questions = await getQuiz(1, 'easy');
+      const questions = await getQuiz(5, 'easy');
       console.log(questions)
       setQuizArr(questions)
     }
@@ -141,17 +153,18 @@ const classes = useStyles();
 
 if(!quizArr.length){
   return(
-    <h3>Loading...</h3>
+    <Loading />
   )
 }
 if(displayScore){
   return (
-    <>
+    <div>
       <Score
       score= {scoreValue}
       clickHandler= {nextQuizHandler}
+      answerForDisplay= {answerTable}
       />
-    </>
+    </div>
   )
 }else{
       return (

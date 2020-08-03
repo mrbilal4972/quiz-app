@@ -27,4 +27,33 @@ export type Propstype ={
 export type ScorePropsType = {
     score: number
     clickHandler: () => void
+    answerForDisplay: any
+}
+
+export type ScoreCardPropstype ={
+    score: number
+    clickHandler: () => void
+  }
+  
+  export type AnswerType = {
+    userAnswer: string
+    answer: string
+}
+  
+export type Data = {
+    Q_No: number;
+    Your_Answer: string;
+    Correct_Answer: string;
+  }
+
+export type Column = {
+    id: 'Q_No' | 'Your_Answer' | 'Correct_Answer';
+    label: string;
+    minWidth?: number;
+    align?: 'right';
+    format?: (value: number) => string;
+  }
+
+export type AnswerValidationProps = {
+    answerForDisplay: any
 }
