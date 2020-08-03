@@ -81,55 +81,55 @@ const useStyles = makeStyles({
 
   return (
     <>
-        <div>
-            <Paper className={classes.root}>
-            <TableContainer className={classes.container}>
-                <Table stickyHeader aria-label="sticky table">
-                <TableHead>
-                    <TableRow>
-                    {columns.map((column) => (
-                        <TableCell
-                        key={column.id}
-                        align={column.align}
-                        style={{ minWidth: column.minWidth }}
-                        className = {classes.tableHeader}
-                        >
-                        {column.label}
-                        </TableCell>
-                    ))}
-                    </TableRow>
-                </TableHead>
-                <TableBody>
-                    {rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row, index) => {
-                    return (
-                        <TableRow hover role="checkbox" tabIndex={-1} key={row.Q_No}>
-                        {columns.map((column) => {
-                            const value = row[column.id];
-                            return (
-                                // console.log(answerForDisplay[index].answer)
-                            <TableCell key={column.id} align={column.align} className = {column.label === 'Your_Answer' ? (value === answerForDisplay[index].answer ? classes.right : classes.wrong) : classes.others }>
-                                {value}
-                                {/* {column.format && typeof value === 'number' ? column.format(value) : value} */}
-                            </TableCell>
-                            );
-                        })}
-                        </TableRow>
-                    );
-                    })}
-                </TableBody>
-                </Table>
-            </TableContainer>
-            <TablePagination
-                rowsPerPageOptions={[5, 10, 20]}
-                component="div"
-                count={rows.length}
-                rowsPerPage={rowsPerPage}
-                page={page}
-                onChangePage={handleChangePage}
-                onChangeRowsPerPage={handleChangeRowsPerPage}
-            />
-            </Paper>
-        </div>
+      <div>
+          <Paper className={classes.root}>
+          <TableContainer className={classes.container}>
+              <Table stickyHeader aria-label="sticky table">
+              <TableHead>
+                  <TableRow>
+                  {columns.map((column) => (
+                      <TableCell
+                      key={column.id}
+                      align={column.align}
+                      style={{ minWidth: column.minWidth }}
+                      className = {classes.tableHeader}
+                      >
+                      {column.label}
+                      </TableCell>
+                  ))}
+                  </TableRow>
+              </TableHead>
+              <TableBody>
+                  {rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row, index) => {
+                  return (
+                      <TableRow hover role="checkbox" tabIndex={-1} key={row.Q_No}>
+                      {columns.map((column) => {
+                          const value = row[column.id];
+                          return (
+                              // console.log(answerForDisplay[index].answer)
+                          <TableCell key={column.id} align={column.align} className = {column.label === 'Your_Answer' ? (value === answerForDisplay[index].answer ? classes.right : classes.wrong) : classes.others }>
+                              {value}
+                              {/* {column.format && typeof value === 'number' ? column.format(value) : value} */}
+                          </TableCell>
+                          );
+                      })}
+                      </TableRow>
+                  );
+                  })}
+              </TableBody>
+              </Table>
+          </TableContainer>
+          <TablePagination
+              rowsPerPageOptions={[5, 10, 20]}
+              component="div"
+              count={rows.length}
+              rowsPerPage={rowsPerPage}
+              page={page}
+              onChangePage={handleChangePage}
+              onChangeRowsPerPage={handleChangeRowsPerPage}
+          />
+          </Paper>
+      </div>
     </>
   )
 }
